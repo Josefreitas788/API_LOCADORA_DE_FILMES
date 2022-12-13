@@ -1,5 +1,13 @@
 const express = require('express');
 const app = express();
+const sequelize = require('./models/connection_db');
+
+
+sequelize.authenticate().then(() => {
+  console.log("Success!");
+  }).catch((err) => {
+    console.log(err);
+  });
 
 app.get('/', (req,res) => {
   res.send("Hello");
