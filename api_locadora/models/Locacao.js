@@ -1,8 +1,8 @@
 const {sequelize, DataTypes} = require('sequelize');
 const Filme = require('./filme');
-const Locatario = require('./locatario');
+const Locatario = require('./Locatario');
 
-const Hist_locacao = sequelize.define('hist_locacao', {
+const Locacao = sequelize.define('locacao', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -14,7 +14,7 @@ const Hist_locacao = sequelize.define('hist_locacao', {
     references: {
       model: Filme,
       key: 'id'
-    } 
+    }
   },
   id_locatario: {
     type: DataTypes.INTEGER,
@@ -36,4 +36,4 @@ const Hist_locacao = sequelize.define('hist_locacao', {
   }
 });
 
-module.exports = Hist_locacao;
+module.exports = Locacao;

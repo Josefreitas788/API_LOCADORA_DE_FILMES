@@ -1,4 +1,4 @@
-const Locatario = require('../models/locatario');
+const Locatario = require('../models/Locatario');
 
 module.exports = {
     async store(req, res){
