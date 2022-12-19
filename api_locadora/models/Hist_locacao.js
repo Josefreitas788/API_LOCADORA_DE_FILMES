@@ -1,8 +1,9 @@
-const {sequelize, DataTypes} = require('sequelize');
-const Filme = require('./filme');
+const {DataTypes} = require('sequelize');
+const database = require('./connection_db');
+const Filme = require('./Filme');
 const Locatario = require('./Locatario');
 
-const Hist_locacao = sequelize.define('hist_locacao', {
+const Hist_locacao = database.define('hist_locacao', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,

@@ -3,26 +3,26 @@ const Filme = require('../models/Filme');
 module.exports = {
 
   async store(req, res) {
-    let Filme = await Filme.create(req.body);
-    return res.json({ message: 'Filme '+ Filme + ' cadastrado com sucesso!' });
+    let filme = await Filme.create(req.body);
+    return res.json({ message: 'Filme '+ filme + ' cadastrado com sucesso!' });
   },
 
   async show(req, res) {
-    let Filme = await Filme.findById(req.params.id);
+    let filme = await Filme.findById(req.params.id);
     
-    return res.json(Filme);
+    return res.json(filme);
   },
 
   async destroy(req, res) {
-    let Filme = await Filme.findByIdAndRemove(req.params.id);
+    let filme = await Filme.findByIdAndRemove(req.params.id);
 
-    return res.json({ message: 'Filme ' + Filme + ' removido com sucesso!' });
+    return res.json({ message: 'Filme ' + filme + ' removido com sucesso!' });
   },
 
   async update(req, res) {
-    let Filme = await Filme.Update(req.body,
+    let filme = await Filme.Update(req.body,
       { where: { id: req.params.id } }
     );
-    return res.json({ message: 'Filme ' + Filme + ' atualizado com sucesso!' })
+    return res.json({ message: 'Filme ' + filme + ' atualizado com sucesso!' })
     }
   };  

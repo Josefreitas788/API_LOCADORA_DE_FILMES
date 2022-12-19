@@ -1,6 +1,7 @@
-const {sequelize, DataTypes} = require('sequelize');
+const {DataTypes} = require('sequelize');
+const database = require('./connection_db');
 
-const Locatario = sequelize.define('locatario', {
+const Locatario = database.define('locatario', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
