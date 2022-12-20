@@ -4,25 +4,31 @@ module.exports = {
 
   async store(req, res) {
     let filme = await Filme.create(req.body);
-    return res.json({ message: 'Filme '+ filme + ' cadastrado com sucesso!' });
+    return res.json({ filme });
   },
 
   async show(req, res) {
-    let filme = await Filme.findById(req.params.id);
-    
+    let filme = await Filme.findByPk(req.params.id);
+
     return res.json(filme);
   },
 
   async destroy(req, res) {
-    let filme = await Filme.findByIdAndRemove(req.params.id);
+    let filme = await Filme.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
 
-    return res.json({ message: 'Filme ' + filme + ' removido com sucesso!' });
+    return res.json({ filme });
   },
 
   async update(req, res) {
-    let filme = await Filme.Update(req.body,
-      { where: { id: req.params.id } }
-    );
-    return res.json({ message: 'Filme ' + filme + ' atualizado com sucesso!' })
+    let filme = await Filme.update(req.body, {
+      where: { 
+        id: req.body.id 
+      } 
+  });
+    return res.json({ filme })
     }
   };  

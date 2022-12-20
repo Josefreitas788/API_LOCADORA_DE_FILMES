@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router('');
 const LocacaoController = require('../controllers/Locacao');
 
-router.post('/locacao', LocacaoController.store);
-router.get('/locacao/:id', LocacaoController.show);
-router.delete('/locacao/:id', LocacaoController.destroy);
-router.put('/locacao/:id', LocacaoController.update);
+router.post('/', LocacaoController.store);
+router.get('/:id', LocacaoController.show);
+router.delete('/:id', LocacaoController.destroy);
+router.put('/', LocacaoController.update);
 
 module.exports = router;

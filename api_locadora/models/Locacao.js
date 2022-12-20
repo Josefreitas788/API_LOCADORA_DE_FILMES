@@ -35,6 +35,11 @@ const Locacao = database.define('locacao', {
     type: DataTypes.CHAR,
     allowNull: false
   }
-});
+ },
+  {
+    freezeTableName: true,
+    timestamps: false
+  }
+);
 
 module.exports = Locacao;

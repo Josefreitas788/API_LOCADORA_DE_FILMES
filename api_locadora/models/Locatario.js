@@ -15,7 +15,12 @@ const Locatario = database.define('locatario', {
     type: DataTypes.TEXT,
     allowNull: false
   }
-});
+ },
+  {
+    freezeTableName: true,
+    timestamps: false
+  }
+);
 
 module.exports = Locatario;
 

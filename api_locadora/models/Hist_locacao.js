@@ -32,9 +32,14 @@ const Hist_locacao = database.define('hist_locacao', {
     type: DataTypes.DATE
   },
   ind_entregue: {
-    type: DataTypes.text,
+    type: DataTypes.CHAR(1),
     allowNull: false
   }
-});
+ },
+  {
+    freezeTableName: true,
+    timestamps: false
+  }
+);
 
 module.exports = Hist_locacao;

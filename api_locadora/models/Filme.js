@@ -1,7 +1,7 @@
 const {DataTypes } = require("sequelize");
-const database = require('./connection_db');
+const db = require('./connection_db');
 
-const Filme = database.define("filme",{
+const Filme = db.define("filme",{
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -13,8 +13,14 @@ const Filme = database.define("filme",{
   },
   lancamento: {
     type: DataTypes.DATE,
+
   }
-});
+ },
+  {
+    freezeTableName: true,
+    timestamps: false
+  }
+);
 
 
 module.exports = Filme;
