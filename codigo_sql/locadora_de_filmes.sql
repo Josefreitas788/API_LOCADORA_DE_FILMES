@@ -107,6 +107,7 @@ update locacao set ind_entregue = 'S' where id = 2;
 select * from FILME;
 select * from locacao;
 
+
 select * from hist_locacao;
 
 insert into hist_locacao(id,id_filme,id_locatario,ind_entregue)
