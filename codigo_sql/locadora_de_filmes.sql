@@ -62,9 +62,9 @@ as
 $$
 begin
 	if new.ind_entregue = 'S' then 
-		insert into hist_locacao(id,id_filme,id_locacao,data_inicio_locacao,data_fim_locacao,ind_entregue)
+		insert into hist_locacao(id,id_filme,id_locatario,data_inicio_locacao,data_fim_locacao,ind_entregue)
 --			values(select * from locacao where ind_entregue = 'S')
-			values(old.id,old.id_filme,old.id_locacao,old.data_inicio_locacao,old.data_fim_locacao,old.ind_entregue);
+			values(new.id,new.id_filme,new.id_locatario,new.data_inicio_locacao,new.data_fim_locacao,new.ind_entregue);
 		
 		delete from locacao where ind_entregue = 'S';
 	end if;					
@@ -74,11 +74,11 @@ $$
  
 
 create trigger trigger_locacao_aiu after insert or update 
-on "locacao"
+on locacao
 for each row
 	execute procedure func_locacao();
 	
-drop trigger trigger_locacao_aiu;	
+drop trigger trigger_locacao_aiu;
 
 	
 create table hist_locacao( 
@@ -109,9 +109,7 @@ select * from locacao;
 
 select * from hist_locacao;
 
-
-
-insert into hist_locacao(id,id_filme,id_locacao,ind_entregue)
+insert into hist_locacao(id,id_filme,id_locatario,ind_entregue)
 	values(1,1,1,'S');
 --			values(select * from locacao where id = 2)
 
