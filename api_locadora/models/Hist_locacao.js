@@ -2,12 +2,21 @@ const {DataTypes} = require('sequelize');
 const database = require('./connection_db');
 const Filme = require('./Filme');
 const Locatario = require('./Locatario');
+const Locacao = require('./Locacao');
 
 const Hist_locacao = database.define('hist_locacao', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
+  },
+  id_locacao: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Locacao,
+      key: 'id'
+    }
   },
   id_filme: {
     type: DataTypes.INTEGER,

@@ -3,32 +3,47 @@ const Filme = require('../models/Filme');
 module.exports = {
 
   async store(req, res) {
-    let filme = await Filme.create(req.body);
-    return res.json({ filme });
+    try {
+      let filme = await Filme.create(req.body);
+      return res.json({ filme });
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
   },
 
   async show(req, res) {
-    let filme = await Filme.findByPk(req.params.id);
-
-    return res.json(filme);
+    try {
+      let filme = await Filme.findByPk(req.params.id);
+      return res.json(filme);
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
   },
 
   async destroy(req, res) {
-    let filme = await Filme.destroy({
-      where: {
-        id: req.params.id
-      }
-    });
+    try {
+      let filme = await Filme.destroy({
+        where: {
+          id: req.params.id
+        }
+      });
 
-    return res.json({ filme });
+      return res.json({ filme });
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
   },
 
   async update(req, res) {
-    let filme = await Filme.update(req.body, {
-      where: { 
-        id: req.body.id 
-      } 
-  });
-    return res.json({ filme })
+    try {
+      let filme = await Filme.update(req.body, {
+        where: {
+          id: req.body.id
+        }
+      });
+      return res.json({ filme })
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
     }
-  };  
+  }
+};  
