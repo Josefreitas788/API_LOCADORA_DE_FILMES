@@ -62,7 +62,7 @@ as
 $$
 begin
 	if new.ind_entregue = 'S' then 
-		insert into hist_locacao(id,id_filme,id_locatario,data_inicio_locacao,data_fim_locacao,ind_entregue)
+		insert into hist_locacao(id_locacao,id_filme,id_locatario,data_inicio_locacao,data_fim_locacao,ind_entregue)
 --			values(select * from locacao where ind_entregue = 'S')
 			values(new.id,new.id_filme,new.id_locatario,new.data_inicio_locacao,new.data_fim_locacao,new.ind_entregue);
 		
@@ -80,9 +80,11 @@ for each row
 	
 drop trigger trigger_locacao_aiu;
 
+drop table hist_locacao;
 	
 create table hist_locacao( 
-	id int primary key,
+	id Serial primary key, 
+	id_locacao int not null,
 	id_filme int not null,
 	id_locatario int not null,
 	data_inicio_locacao date,
@@ -102,7 +104,7 @@ create table hist_locacao(
 
 insert into filme(nome) values('joala'); 
 
-update locacao set ind_entregue = 'S' where id = 2;
+update locacao set ind_entregue = 'S' where id = 14;
 
 select * from FILME;
 select * from locacao;
